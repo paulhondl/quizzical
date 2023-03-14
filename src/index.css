@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif
+}
+
+button:disabled {
+  background-color: darkred !important;
+  cursor: not-allowed;
+}
+
+body {
+  background-color: goldenrod;
+  margin: 0;
+  padding: 0;
+}
+
+.start-page {
+  margin: 0 auto;
+  min-height: 400px;
+  min-width: 550px;
+  background-color: #F5F7FB;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #293264;
+  position: relative;
+}
+
+.start {
+  margin: 0 auto;
+  min-height: 400px;
+  min-width: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #F5F7FB;
+  position: relative;
+}
+
+.quiz {
+  display: none;
+  max-width: 100%;
+  padding-inline: 3rem;
+}
+
+.title {
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
+.description {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.btn {
+  color: #F5F7FB;
+  background-color: #4D5B9E;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.75rem;
+}
+
+.start-btn {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 1rem 1.75rem;
+}
+
+.start-btn:hover {
+  opacity: 0.9;
+}
+
+.start-btn:active {
+  transform: scale(0.98);
+}
+
+.blob-blue {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.blob-yellow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+}
+
+/* QUESTIONS */
+
+
+.single-question {
+  text-align: left;
+  border-bottom: 2px solid #DBDEF0;
+}
+
+.question-riddle {
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.answers {
+  list-style-type: none;
+  font-size: 0.75rem;
+  display: flex;
+  gap: 2rem;
+  padding-left: 0;
+}
+
+.answers > * {
+  display: flex;
+  align-items: center;
+}
+
+a {
+  border: 1px solid #293264;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  padding: 0.25rem 1rem;
+}
+
+
+.active {
+  border: 1px solid #D6DBF5;
+  background-color: #D6DBF5;
+}
+
+.check-wrapper {
+  display: none;
+}
+
+.check-btn,
+.play-btn {
+  margin-block: 1rem;
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+}
+
+.check-btn:not(:disabled):hover,
+.play-btn:hover {
+  opacity: 0.9;
+}
+
+.check-btn:not(:disabled):active,
+.play-btn:active {
+  transform: scale(0.95);
+}
+
+
+
+.solution-wrapper {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+}
