@@ -2,8 +2,22 @@ import React from 'react';
 import { shuffleAnswers, checkAnswers, replay } from "./helpers.js"
 
 export default function StartPage(props) {
-  
+
   const [answersSelected, setAnswersSelected] = React.useState(0);
+  const [questions, setQuestions] = React.useState([]);
+
+
+  React.useEffect(() => {
+    // Shuffles question answers only once when the questions are ready
+    // reason why it did not work previously was due to reshuffling after each render
+    const questions = props.questions.map(question => {
+      return {
+        ...question,
+        mixedAnswers: shuffleAnswers(question.correct_answer, question.incorrect_answers)
+      }
+    })
+    setQuestions(questions)
+  }, [props.questions])
 
   function toggleLink(event) {
 
@@ -19,42 +33,9 @@ export default function StartPage(props) {
       }
     })
 
-    // setAnswersSelected(document.querySelectorAll(".active").length)
-
-    if(document.querySelectorAll(".active").length === 5) {
-      setAnswersSelected(document.querySelectorAll(".active").length)
-    } else {
-      setAnswersSelected(0)
-    }
-
+    setAnswersSelected(document.querySelectorAll(".active").length)
   }
 
-
-  
-
-  let questionsRender = props.questions.map(question => {
-
-    let mixedAnswers = shuffleAnswers(question.correct_answer, question.incorrect_answers)
-
-    return (
-      <div className="single-question" >
-        <h1 id={props.questions.indexOf(question)} className="question-riddle">{question.question}</h1>
-        <ul id={props.questions.indexOf(question)} className="answers">
-          {mixedAnswers.map((mixedAnswer) => (
-            <li>
-              <a
-                className={props.questions.indexOf(question)}
-                data-correct={mixedAnswer.isCorrect}
-                data-nx={props.questions.indexOf(question)}
-                onClick={toggleLink}>
-                {mixedAnswer.answer}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
-  })
 
   return (
     <div className="start-page">
@@ -66,7 +47,29 @@ export default function StartPage(props) {
         <button onClick={props.handleClick} className="btn start-btn">Start quiz</button>
       </div>
       <div className="quiz">
-        {questionsRender}
+
+        {questions?.map(question => {
+          return (
+            <div className="single-question" >
+              <h1 id={questions.indexOf(question)} className="question-riddle">{question.question}</h1>
+
+              <ul id={questions.indexOf(question)} className="answers">
+                {question.mixedAnswers.map((mixedAnswer) => (
+                  <li>
+                    <a
+                      className={questions.indexOf(question)}
+                      data-correct={mixedAnswer.isCorrect}
+                      data-nx={questions.indexOf(question)}
+                      onClick={toggleLink}>
+                      {mixedAnswer.answer}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        })}
+
       </div>
       <div className="check-wrapper">
         <button className="btn check-btn" disabled={answersSelected < 5} onClick={checkAnswers}>Check Answers</button>
