@@ -40,15 +40,15 @@ export default function StartPage(props) {
   return (
     <div className="start-page">
       <div className="start">
-        <img className="blob-blue" alt="" src="../public/img/blob5.png" />
-        <img className="blob-yellow" alt="" src="../public/img/blob5yel.png" />
+        <img className="blob-blue" alt="" src="../img/blob5.png" />
+        <img className="blob-yellow" alt="" src="../img/blob5yel.png" />
         <h1 className="title">Quizzical</h1>
         <p className="description">Try out the funny quizzlet!</p>
         <button onClick={props.handleClick} className="btn start-btn">Start quiz</button>
       </div>
       <div className="quiz">
-        <img className="blob-blue" alt="" src="../public/img/blob5.png" />
-        <img className="blob-yellow" alt="" src="../public/img/blob5yel.png" />
+        <img className="blob-blue" alt="" src="../img/blob5.png" />
+        <img className="blob-yellow" alt="" src="../img/blob5yel.png" />
 
         {questions?.map(question => {
           return (
