@@ -47,6 +47,8 @@ export default function StartPage(props) {
         <button onClick={props.handleClick} className="btn start-btn">Start quiz</button>
       </div>
       <div className="quiz">
+        <img className="blob-blue" alt="" src="../public/img/blob5.png" />
+        <img className="blob-yellow" alt="" src="../public/img/blob5yel.png" />
 
         {questions?.map(question => {
           return (
@@ -69,15 +71,15 @@ export default function StartPage(props) {
             </div>
           )
         })}
-
+          <div className="check-wrapper">
+            <button className="btn check-btn" disabled={answersSelected < 5} onClick={checkAnswers}>Check Answers</button>
+          </div>
+          <div className="solution-wrapper">
+            <p>You got <span id="correct-answers">0</span>/5 answers correct!</p>
+            <button className="btn play-btn" onClick={replay}>Play again</button>
+          </div>
       </div>
-      <div className="check-wrapper">
-        <button className="btn check-btn" disabled={answersSelected < 5} onClick={checkAnswers}>Check Answers</button>
-      </div>
-      <div className="solution-wrapper">
-        <p>You got <span id="correct-answers">0</span>/5 answers correct!</p>
-        <button className="btn play-btn" onClick={replay}>Play again</button>
-      </div>
+      
     </div>
   )
 }
